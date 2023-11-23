@@ -26,6 +26,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut terminal = Terminal::new(backend)?;
 
     let mut app = App::new();
+    app.pairs.insert("name".to_string(), "Me".to_string());
     let res = run_app(&mut terminal, &mut app);
 
     disable_raw_mode()?;
