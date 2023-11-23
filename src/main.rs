@@ -5,12 +5,16 @@ use crossterm::execute;
 use crossterm::terminal::{
     disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen,
 };
-use ratatui::backend::{self, Backend, CrosstermBackend};
+use ratatui::backend::{Backend, CrosstermBackend};
 use ratatui::Terminal;
+use std::error::Error;
 use std::io;
 
 mod app;
 use app::{App, CurrentScreen, CurrentlyEditing};
+
+mod ui;
+use ui::ui;
 
 fn main() -> Result<(), Box<dyn Error>> {
     // setup terminal
@@ -122,6 +126,7 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<
                     }
                     _ => {}
                 },
+                _ => {}
             }
         }
     }

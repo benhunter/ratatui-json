@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use serde_json::Result;
 
 pub enum CurrentScreen {
     Main,
@@ -40,7 +41,7 @@ impl App {
     }
 
     pub fn toggle_editing(&mut self) {
-        if let Some(edit_mode) = self.currently_editing {
+        if let Some(edit_mode) = &self.currently_editing {
             match edit_mode {
                 CurrentlyEditing::Key => {
                     self.currently_editing = Some(CurrentlyEditing::Value);
